@@ -1,0 +1,11 @@
+---
+name: SexCraft
+version: 0.0.1
+main: CJMustard1452\SexCraft\Loader
+api: 5.15.0
+src-namespace-prefix: CJMustard1452\SexCraft
+
+permissions:
+  sexcraft.admin:
+    default: op
+...
