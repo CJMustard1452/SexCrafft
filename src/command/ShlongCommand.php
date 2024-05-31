@@ -25,8 +25,6 @@ class ShlongCommand extends Command implements PluginOwned {
             return;
         }
 
-        MoanEngine::brodcastSound([$sender], MoanEngine::MOAN_ONE);
-
         new ShlongCommandForm($sender);
     }
 

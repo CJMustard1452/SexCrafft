@@ -10,7 +10,7 @@ use ZipArchive;
 class ResourceManager {
 
     public function __construct() {
-        $target = Loader::getInstance()->getDataFolder() . DIRECTORY_SEPARATOR . "resource_pack.zip";
+        $target = Loader::getInstance()->getServer()->getResourcePackManager()->getPath() . DIRECTORY_SEPARATOR . "sexcraft.zip";
         $source = Loader::getInstance()->getResourceFolder() . DIRECTORY_SEPARATOR . "resource_pack";
 
         if(!file_exists($target)) ResourceManager::buildResourcePack($source, $target);
