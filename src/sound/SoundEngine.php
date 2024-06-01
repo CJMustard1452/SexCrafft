@@ -1,10 +1,10 @@
 <?php 
 
-namespace CJMustard1452\SexCraft\moan;
+namespace CJMustard1452\SexCraft\sound;
 
 use pocketmine\network\mcpe\protocol\PlaySoundPacket;
 
-class MoanEngine {
+class SoundEngine {
 
     public const MOAN_ONE = "moan_one";
     public const FAMILY_MATTERS = "family_matters";

@@ -17,6 +17,7 @@ class Loader extends PluginBase {
 
         new ResourceManager();
 
+        echo time();
         new SexCraft();
         new PenisFactory();
     }
