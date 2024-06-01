@@ -13,7 +13,8 @@ class ResourceManager {
         $target = Loader::getInstance()->getServer()->getResourcePackManager()->getPath() . DIRECTORY_SEPARATOR . "sexcraft.zip";
         $source = Loader::getInstance()->getResourceFolder() . DIRECTORY_SEPARATOR . "resource_pack";
 
-        if(!file_exists($target)) ResourceManager::buildResourcePack($source, $target);
+        if(file_exists($target)) unlink($target);
+        ResourceManager::buildResourcePack($source, $target);
 
         $rpm = Loader::getInstance()->getServer()->getResourcePackManager();
         $rp = new ZippedResourcePack($target);
@@ -43,16 +44,17 @@ class ResourceManager {
     public static function recurseDirectoryToZip(string $path, ZipArchive $zipArchive, string $localDir = ""): void {
         foreach(scandir($path) as $item) {
             if($item == "." || $item == "..") continue;
+            
             $itemPath = $path . DIRECTORY_SEPARATOR . $item;
+            ($localDir == "") ? $localFile = $item : $localFile = $localDir . DIRECTORY_SEPARATOR . $item;
 
             if(!is_dir($path . DIRECTORY_SEPARATOR . $item)) {
-                $zipArchive->addFile($itemPath, $localDir . $item);
+                $zipArchive->addFile($itemPath, $localFile);
                 continue;
             }
 
-            $zipArchive->addEmptyDir($item);
-
-            self::recurseDirectoryToZip($itemPath, $zipArchive, $item . DIRECTORY_SEPARATOR);
+            $zipArchive->addEmptyDir($localFile);
+            self::recurseDirectoryToZip($itemPath, $zipArchive, $localFile);
         }
     }
 }
