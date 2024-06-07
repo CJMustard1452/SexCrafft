@@ -1,0 +1,6 @@
+{
+  "ui_defs": [
+    "ui/forms/long_select.json",
+    "ui/forms/btn_close.json"
+  ]
+}
